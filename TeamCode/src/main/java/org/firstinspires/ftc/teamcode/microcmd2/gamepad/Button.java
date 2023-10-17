@@ -1,13 +1,13 @@
-package org.firstinspires.ftc.teamcode.microcmd.gamepad;
+package org.firstinspires.ftc.teamcode.microcmd2.gamepad;
 
-import org.firstinspires.ftc.teamcode.microcmd.Cmd;
-import org.firstinspires.ftc.teamcode.microcmd.Periodic;
-import org.firstinspires.ftc.teamcode.microcmd.Scheduler;
-
+import org.firstinspires.ftc.teamcode.microcmd2.Cmd;
+import org.firstinspires.ftc.teamcode.microcmd2.IfCmd;
+import org.firstinspires.ftc.teamcode.microcmd2.Periodic;
+import org.firstinspires.ftc.teamcode.microcmd2.Scheduler;
 
 import java.util.function.BooleanSupplier;
 
-import static org.firstinspires.ftc.teamcode.microcmd.gamepad.Button.ButtonState.*;
+import static org.firstinspires.ftc.teamcode.microcmd2.gamepad.Button.ButtonState.*;
 
 
 public class Button implements Periodic {
@@ -45,12 +45,16 @@ public class Button implements Periodic {
         previousState = currentState;
     }
 
+    public void scheduleIf(Cmd cmd, BooleanSupplier event) {
+        Scheduler.schedule(new IfCmd(cmd, event, () -> false));
+    }
+
     public BooleanSupplier held() {
         return () -> currentState == HELD;
     }
 
     public void held(Cmd cmd) {
-        Scheduler.scheduleIf(cmd, held());
+        scheduleIf(cmd, held());
     }
 
     public BooleanSupplier pressed() {
@@ -58,7 +62,7 @@ public class Button implements Periodic {
     }
 
     public void pressed(Cmd cmd) {
-        Scheduler.scheduleIf(cmd, pressed());
+        scheduleIf(cmd, pressed());
     }
 
     public BooleanSupplier released() {
@@ -66,7 +70,7 @@ public class Button implements Periodic {
     }
 
     public void released(Cmd cmd) {
-        Scheduler.scheduleIf(cmd, released());
+        scheduleIf(cmd, released());
     }
 
     public BooleanSupplier pressedAndReleased() {
@@ -74,6 +78,6 @@ public class Button implements Periodic {
     }
 
     public void pressedAndReleased(Cmd cmd) {
-        Scheduler.scheduleIf(cmd, pressedAndReleased());
+        scheduleIf(cmd, pressedAndReleased());
     }
 }

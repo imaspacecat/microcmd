@@ -150,10 +150,10 @@ The readme.md file located in the [/TeamCode/src/main/java/org/firstinspires/ftc
     * [AprilTag Test Images](https://ftc-docs.firstinspires.org/apriltag-test-images)
     * [Camera Calibration](https://ftc-docs.firstinspires.org/camera-calibration)
 * Adds Driver Station support for Logitech Dual Action and Sony PS5 DualSense gamepads.
-    * This **does not** include support for the Sony PS5 DualSense Edge gamepad.
-    * Always refer to Game Manual 1 to determine gamepad legality in competition.
+    * This **does not** include support for the Sony PS5 DualSense Edge gamepadEx.
+    * Always refer to Game Manual 1 to determine gamepadEx legality in competition.
 * Adds support for MJPEG payload streaming to UVC driver (external JPEG decompression routine required for use).
-* Shows a hint on the Driver Station UI about how to bind a gamepad when buttons are pressed or the sticks are moved on an unbound gamepad.
+* Shows a hint on the Driver Station UI about how to bind a gamepadEx when buttons are pressed or the sticks are moved on an unbound gamepadEx.
 * Adds option for fullscreening "Camera Stream" on Driver Station.
 * OnBotJava source code is automatically saved as a ZIP file on every build with a rolling window of the last 30 builds kept; allows recovering source code from previous builds if code is accidentally deleted or corrupted.
 * Adds support for changing the addresses of Expansion Hubs that are not connected directly via USB.
@@ -308,7 +308,7 @@ This is a bug fix only release to address the following four issues.
 * Increases the height of the 3-dots Landscape menu touch area on the Driver Station, making it much easier to select.
 * Adds `terminateOpModeNow()` method to allow OpModes to cleanly self-exit immediately.
 * Adds `opModeInInit()` method to `LinearOpMode` to facilitate init-loops. Similar to `opModeIsActive()` but for the init phase.
-* Warns user if they have a Logitech F310 gamepad connected that is set to DirectInput mode.
+* Warns user if they have a Logitech F310 gamepadEx connected that is set to DirectInput mode.
 * Allows SPARKmini motor controllers to react more quickly to speed changes.
 * Hides the version number of incorrectly installed sister app (i.e. DS installed on RC device or vice-versa) on inspection screen.
 * Adds support for allowing the user to edit the comment for the runOpMode block.
@@ -328,11 +328,11 @@ This is a bug fix only release to address the following four issues.
 * Fixes [issue #316](https://github.com/FIRST-Tech-Challenge/FtcRobotController/issues/316) (MatrixF.inverted() returned an incorrectly-sized matrix for 1x1 and 2x2 matrixes).
 * Self inspect now allows for Driver Station and Robot Controller compatibility between point releases.
 * Fixes bug where if the same `RumbleEffect` object instance was queued for multiple gamepads, it
-  could happen that both rumble commands would be sent to just one gamepad.
+  could happen that both rumble commands would be sent to just one gamepadEx.
 * Fixes bug in Driver Station where on the Driver Hub, if Advanced Gamepad Features was disabled and
-  an officially supported gamepad was connected, then opening the Advanced Gamepad Features or
-  Gamepad Type Overrides screens would cause the gamepad to be rebound by the custom USB driver even
-  though advanced gamepad features was disabled.
+  an officially supported gamepadEx was connected, then opening the Advanced Gamepad Features or
+  Gamepad Type Overrides screens would cause the gamepadEx to be rebound by the custom USB driver even
+  though advanced gamepadEx features was disabled.
 * Protects against (unlikely) null pointer exception in Vuforia Localizer.
 * Harden OnBotJava and Blocks saves to protect against save issues when disconnecting from Program and Manage
 * Fixes issue where the RC app would hang if a REV Hub I2C write failed because the previous I2C
@@ -348,7 +348,7 @@ This is a bug fix only release to address the following four issues.
 
 * Fixes crash when calling `isPwmEnabled()` ([issue #223](https://github.com/FIRST-Tech-Challenge/FtcRobotController/issues/233)).
 * Fixes lint error ([issue #4](https://github.com/FIRST-Tech-Challenge/FtcRobotController/issues/4)).
-* Fixes Driver Station crash when attempting to use DualShock4 v1 gamepad with Advanced Gamepad Features enabled ([issue #173](https://github.com/FIRST-Tech-Challenge/FtcRobotController/issues/173)).
+* Fixes Driver Station crash when attempting to use DualShock4 v1 gamepadEx with Advanced Gamepad Features enabled ([issue #173](https://github.com/FIRST-Tech-Challenge/FtcRobotController/issues/173)).
 * Fixes possible (but unlikely) Driver Station crash when connecting gamepads of any type.
 * Fixes bug where Driver Station would use generic 20% deadzone for Xbox360 and Logitech F310 gamepads when Advanced Gamepad Features was disabled.
 * Added SimpleOmniDrive sample OpMode.
@@ -392,15 +392,15 @@ This is a bug fix only release to address the following four issues.
       * org.firstinspires.ftc.ftccommon.external.OnDestroy
       * org.firstinspires.ftc.ftccommon.external.WebHandlerRegistrar
 * Adds support for REV Robotics Driver Hub.
-* Adds fully custom userspace USB gamepad driver to Driver Station (see "Advanced Gamepad Features" menu in DS settings).
+* Adds fully custom userspace USB gamepadEx driver to Driver Station (see "Advanced Gamepad Features" menu in DS settings).
     * Allows gamepads to work on devices without native Linux kernel support (e.g. some Romanian Motorola devices).
-    * Allows the DS to read the unique serial number of each gamepad, enabling auto-recovery of dropped gamepads even if two gamepads of the same model drop. *(NOTE: unfortunately this does not apply to Etpark gamepads, because they do not have a unique serial)*.
+    * Allows the DS to read the unique serial number of each gamepadEx, enabling auto-recovery of dropped gamepads even if two gamepads of the same model drop. *(NOTE: unfortunately this does not apply to Etpark gamepads, because they do not have a unique serial)*.
     * Reading the unique serial number also provides the ability to configure the DS to assign gamepads to a certain position by default (so no need to do start+a/b at all).
-    * The LED ring on the Xbox360 gamepad and the RGB LED bar on the PS4 gamepad is used to indicate the driver position the gamepad is bound to.
+    * The LED ring on the Xbox360 gamepadEx and the RGB LED bar on the PS4 gamepadEx is used to indicate the driver position the gamepadEx is bound to.
     * The rumble motors on the Xbox360, PS4, and Etpark gamepads can be controlled from OpModes.
-    * The 2-point touchpad on the PS4 gamepad can be read from OpModes.
-    * The "back" and "guide" buttons on the gamepad can now be safely bound to robot controls (Previously, on many devices, Android would intercept these buttons as home button presses and close the app).
-    * Advanced Gamepad features are enabled by default, but may be disabled through the settings menu in order to revert to gamepad support provided natively by Android.
+    * The 2-point touchpad on the PS4 gamepadEx can be read from OpModes.
+    * The "back" and "guide" buttons on the gamepadEx can now be safely bound to robot controls (Previously, on many devices, Android would intercept these buttons as home button presses and close the app).
+    * Advanced Gamepad features are enabled by default, but may be disabled through the settings menu in order to revert to gamepadEx support provided natively by Android.
 * Improves accuracy of ping measurement.
     * Fixes issue where the ping time showed as being higher than reality when initially connecting to or restarting the robot.
     * To see the full improvement, you must update both the Robot Controller and Driver Station apps.
@@ -563,13 +563,13 @@ Version 5.5 requires Android Studio 4.0 or later.
     * Mismatched app versions warning
     * Unnecessary 2.4 GHz Wi-Fi usage warning
     * REV Hub is running outdated firmware (older than version 1.8.2)
-* Adds support for Sony PS4 gamepad, and reworks how gamepads work on the Driver Station
-    * Removes preference which sets gamepad type based on driver position. Replaced with menu which allows specifying type for gamepads with unknown VID and PID
-	* Attempts to auto-detect gamepad type based on USB VID and PID
-	* If gamepad VID and PID is not known, use type specified by user for that VID and PID
-	* If gamepad VID and PID is not known AND the user has not specified a type for that VID and PID, an educated guess is made about how to map the gamepad
-* Driver Station will now attempt to automatically recover from a gamepad disconnecting, and re-assign it to the position it was assigned to when it dropped
-    * If only one gamepad is assigned and it drops: it can be recovered
+* Adds support for Sony PS4 gamepadEx, and reworks how gamepads work on the Driver Station
+    * Removes preference which sets gamepadEx type based on driver position. Replaced with menu which allows specifying type for gamepads with unknown VID and PID
+	* Attempts to auto-detect gamepadEx type based on USB VID and PID
+	* If gamepadEx VID and PID is not known, use type specified by user for that VID and PID
+	* If gamepadEx VID and PID is not known AND the user has not specified a type for that VID and PID, an educated guess is made about how to map the gamepadEx
+* Driver Station will now attempt to automatically recover from a gamepadEx disconnecting, and re-assign it to the position it was assigned to when it dropped
+    * If only one gamepadEx is assigned and it drops: it can be recovered
     * If two gamepads are assigned, and have **different** VID/PID signatures, and only one drops: it will be recovered
     * If two gamepads are assigned, and have **different** VID/PID signatures, and BOTH drop: both will be recovered
     * If two gamepads are assigned, and have **the same** VID/PID signatures, and only one drops: it will be recovered
@@ -1284,7 +1284,7 @@ Changes include:
  * For LinearOpMode the user now must for a telemetry.update() to update the telemetry data on the driver station.  This update() mechanism ensures that the driver station gets the updated data properly and at the same time.
  * The Auto Configure function of the Robot Controller is now template based.  If there is a commonly used robot configuration, a template can be created so that the Auto Configure mechanism can be used to quickly configure a robot of this type.
  * The logic to detect a runaway OpMode (both in the LinearOpMode and OpMode types) and to abort the run, then auto recover has been improved/implemented.
- * Fix has been incorporated so that Logitech F310 gamepad mappings will be correct for Marshmallow users.
+ * Fix has been incorporated so that Logitech F310 gamepadEx mappings will be correct for Marshmallow users.
 
 ## Release 16.07.08
 
@@ -1337,9 +1337,9 @@ Changes include:
     - When running an OpMode, if one or more modules gets disconnected, the RC & DS will display warnings,and robot will keep on working in spite of the missing module(s).
     - If a disconnected module gets physically reconnected the RC will auto detect the module and the user will regain control of the recently connected module.
     - Warning messages are more helpful (identifies the type of module that’s missing plus its USB serial number).
- * Code changes to fix the null gamepad reference when users try to reference the gamepads in the init() portion of their OpMode.
+ * Code changes to fix the null gamepadEx reference when users try to reference the gamepads in the init() portion of their OpMode.
  * NXT light sensor output is now properly scaled.  Note that teams might have to readjust their light threshold values in their OpModes.
- * On DS user interface, gamepad icon for a driver will disappear if the matching gamepad is disconnected or if that gamepad gets designated as a different driver.
+ * On DS user interface, gamepadEx icon for a driver will disappear if the matching gamepadEx is disconnected or if that gamepadEx gets designated as a different driver.
  * Robot Protocol (ROBOCOL) version number info is displayed in About screen on RC and DS apps.
  * Incorporated a display filter on pairing screen to filter out devices that don’t use the “<TEAM NUMBER>-“ format. This filter can be turned off to show all Wi-Fi Direct devices.
  * Updated text in License file.
@@ -1365,7 +1365,7 @@ Changes include:
  * Fix for "missing hardware leaves robot controller disconnected from driver station" error
  * fix for "fast tapping of Init/Start causes problems" (toast is now only instantiated on UI thread).
  * added some log statements for thread life cycle.
- * moved gamepad reset logic inside of initActiveOpMode() for robustness
+ * moved gamepadEx reset logic inside of initActiveOpMode() for robustness
  * changes made to mitigate risk of race conditions on public methods.
  * changes to try and flag when Wi-Fi Direct name contains non-printable characters.
  * fix to correct race condition between .run() and .close() in ReadWriteRunnableStandard.
@@ -1373,7 +1373,7 @@ Changes include:
  * made ReadWriteRunnableStanard interface public.
  * fixed off-by-one errors in Command constructor
  * moved specific hardware implmentations into their own package.
- * moved specific gamepad implemnatations to the hardware library.
+ * moved specific gamepadEx implemnatations to the hardware library.
  * changed LICENSE file to new BSD version.
  * fixed race condition when shutting down Modern Robotics USB devices.
  * methods in the ColorSensor classes have been synchronized.
@@ -1402,7 +1402,7 @@ Changes include:
  * Fixed timer UI issue
  * Fixed duplicate name UI bug (Legacy Module configuration).
  * Fixed race condition in EventLoopManager.
- * Fix to keep references stable when updating gamepad.
+ * Fix to keep references stable when updating gamepadEx.
  * For legacy Matrix motor/servo controllers removed necessity of appending "Motor" and "Servo" to controller names.
  * Updated HT color sensor driver to use constants from ModernRoboticsUsbLegacyModule class.
  * Updated MR color sensor driver to use constants from ModernRoboticsUsbDeviceInterfaceModule class.

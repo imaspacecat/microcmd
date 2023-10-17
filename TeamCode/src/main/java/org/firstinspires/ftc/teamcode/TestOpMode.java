@@ -27,5 +27,6 @@ public class TestOpMode extends OpMode {
     @Override
     public void loop() {
         gamepad.update();
+        Scheduler.run();
     }
 }
