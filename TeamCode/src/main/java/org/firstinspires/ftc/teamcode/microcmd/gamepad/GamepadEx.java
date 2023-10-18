@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.microcmd.gamepad;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.teamcode.microcmd.Cmd;
+import org.firstinspires.ftc.teamcode.microcmd.IfCmd;
 import org.firstinspires.ftc.teamcode.microcmd.Periodic;
 import org.firstinspires.ftc.teamcode.microcmd.Scheduler;
 
@@ -38,7 +39,7 @@ public class GamepadEx implements Periodic {
 
     public void multiple(Cmd cmd, BooleanSupplier... events) {
         BooleanSupplier allEvents = () -> Stream.of(events).allMatch(BooleanSupplier::getAsBoolean);
-        Scheduler.scheduleIf(cmd, allEvents);
+        Scheduler.schedule(new IfCmd(cmd, allEvents, () -> false));
     }
 
     @Override

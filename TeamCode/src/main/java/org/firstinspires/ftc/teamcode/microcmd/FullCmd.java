@@ -8,11 +8,16 @@ public class FullCmd extends Cmd {
     private final Runnable terminate;
     private final BooleanSupplier isFinished;
 
-    public FullCmd(Runnable init, Runnable run, Runnable terminate, BooleanSupplier isFinished) {
+    public FullCmd(Runnable init, Runnable run, Runnable terminate, BooleanSupplier isFinished, String group) {
+        super(group);
         this.init = init;
         this.run = run;
         this.terminate = terminate;
         this.isFinished = isFinished;
+    }
+
+    public FullCmd(Runnable init, Runnable run, Runnable terminate, BooleanSupplier isFinished) {
+        this(init, run, terminate, isFinished, null);
     }
 
     @Override

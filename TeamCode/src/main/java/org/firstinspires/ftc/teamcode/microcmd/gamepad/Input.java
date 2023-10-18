@@ -1,14 +1,13 @@
-//package org.firstinspires.ftc.teamcode.microcmd.gamepad;
+//package org.firstinspires.ftc.teamcode.microcmd2.gamepad;
 //
-//import org.firstinspires.ftc.teamcode.microcmd.Cmd;
-//import org.firstinspires.ftc.teamcode.microcmd.Periodic;
-//import org.firstinspires.ftc.teamcode.microcmd.Scheduler;
-//
+//import org.firstinspires.ftc.teamcode.microcmd2.Cmd;
+//import org.firstinspires.ftc.teamcode.microcmd2.Periodic;
+//import org.firstinspires.ftc.teamcode.microcmd2.Scheduler;
 //
 //import java.util.function.BooleanSupplier;
 //import java.util.function.Supplier;
 //
-//import static org.firstinspires.ftc.teamcode.microcmd.gamepad.Input.ButtonState.*;
+//import static org.firstinspires.ftc.teamcode.microcmd2.gamepad.Input.ButtonState.*;
 //
 //
 //public class Input<T> implements Periodic {
