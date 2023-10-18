@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.microcmd.gamepad;
 
 import org.firstinspires.ftc.teamcode.microcmd.Cmd;
-import org.firstinspires.ftc.teamcode.microcmd.IfCmd;
+import org.firstinspires.ftc.teamcode.microcmd.example.BindCmd;
 import org.firstinspires.ftc.teamcode.microcmd.Periodic;
 import org.firstinspires.ftc.teamcode.microcmd.Scheduler;
 
@@ -46,7 +46,7 @@ public class Button implements Periodic {
     }
 
     public void scheduleIf(Cmd cmd, BooleanSupplier event) {
-        Scheduler.schedule(new IfCmd(cmd, event, () -> false));
+        Scheduler.schedule(new BindCmd(cmd, event, () -> false));
     }
 
     public BooleanSupplier held() {

@@ -21,7 +21,7 @@ public class FullCmd extends Cmd {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         init.run();
     }
 

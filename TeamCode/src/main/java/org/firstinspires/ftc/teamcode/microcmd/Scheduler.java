@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode.microcmd;
 
-import java.util.ArrayList;
+
 import java.util.Iterator;
-import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Scheduler {
-    private static final List<Cmd> cmds = new ArrayList<>();
-    private static final List<Cmd> toSchedule = new ArrayList<>();
+    private static final Queue<Cmd> cmds = new ConcurrentLinkedQueue<>();
 
     public static void schedule(Cmd cmd) {
         Iterator<Cmd> iter = cmds.iterator();
@@ -17,24 +17,12 @@ public class Scheduler {
                 iter.remove();
             }
         }
-//        List<Cmd> toRemove = new ArrayList<>();
-//        for (Cmd lCmd : cmds) {
-//            if (cmd.getGroup() != null && cmd.getGroup().equals(lCmd.getGroup())) {
-//                lCmd.terminate();
-//                toRemove.add(lCmd);
-//            }
-//        }
-//        cmds.removeAll(toRemove);
 
         cmd.init();
-//        cmds.add(cmd);
-        toSchedule.add(cmd);
+        cmds.add(cmd);
     }
 
     public static void run() {
-        cmds.addAll(toSchedule);
-        toSchedule.clear();
-
         Iterator<Cmd> iter = cmds.iterator();
         while (iter.hasNext()) {
             Cmd next = iter.next();
@@ -44,19 +32,10 @@ public class Scheduler {
             }
         }
 
-//        List<Cmd> toRemove = new ArrayList<>();
-//        for (Cmd cmd : cmds) {
-//            if (cmd.isFinished()) {
-//                cmd.terminate();
-//                toRemove.add(cmd);
-//            }
-//        }
-//        cmds.removeAll(toRemove);
-
         cmds.forEach(Cmd::run);
     }
 
-    public static List<Cmd> getCmds() {
+    public static Queue<Cmd> getCmds() {
         return cmds;
     }
 }
