@@ -11,7 +11,7 @@ import static org.firstinspires.ftc.teamcode.microcmd.gamepad.Button.ButtonState
 
 
 public class Button implements Periodic {
-    private final BooleanSupplier event;
+    private BooleanSupplier event;
     protected boolean isDown = false;
     protected boolean wasDown = false;
     protected ButtonState currentState = NONE;
@@ -21,7 +21,7 @@ public class Button implements Periodic {
         this.event = event;
     }
 
-    enum ButtonState {
+    public enum ButtonState {
         NONE, HELD, PRESSED, RELEASED, PRESSED_AND_RELEASED
     }
 
@@ -80,4 +80,10 @@ public class Button implements Periodic {
     public void pressedAndReleased(Cmd cmd) {
         scheduleIf(cmd, pressedAndReleased());
     }
+
+    protected void setEvent(BooleanSupplier event) {
+        this.event = event;
+    }
+
+    // TODO implement debouncer
 }

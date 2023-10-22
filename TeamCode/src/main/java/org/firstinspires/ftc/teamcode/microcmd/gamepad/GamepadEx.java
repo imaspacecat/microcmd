@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class GamepadEx implements Periodic {
     public Button a, b, x, y, dpadUp, dpadDown, dpadLeft, dpadRight, leftBumper, rightBumper,
-            leftStickButton, rightStickButton;
+            leftStickButton, rightStickButton, leftTrigger, rightTrigger;
     private final Button[] buttons;
 
     public GamepadEx(Gamepad gamepad) {
@@ -32,8 +32,13 @@ public class GamepadEx implements Periodic {
         leftStickButton = new Button(() -> gamepad.left_stick_button);
         rightStickButton = new Button(() -> gamepad.right_stick_button);
 
+//        leftTrigger = new Button(() -> gamepad.left_trigger >= 0.5);
+
+        leftTrigger = new Trigger(() -> gamepad.left_trigger);
+        rightTrigger = new Trigger(() -> gamepad.left_trigger);
+
         buttons = new Button[]{a, b, x, y, dpadUp, dpadDown, dpadLeft, dpadRight, leftBumper, rightBumper,
-                leftStickButton, rightStickButton};
+                leftStickButton, rightStickButton, leftTrigger};
 
     }
 
