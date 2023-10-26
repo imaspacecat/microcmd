@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.microcmd;
 
-
-import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -9,12 +7,10 @@ public class Scheduler {
     private static final Queue<Cmd> cmds = new ConcurrentLinkedQueue<>();
 
     public static void schedule(Cmd cmd) {
-        Iterator<Cmd> iter = cmds.iterator();
-        while (iter.hasNext()) {
-            Cmd next = iter.next();
-            if (cmd.getGroup() != null && cmd.getGroup().equals(next.getGroup())) {
-                next.terminate();
-                iter.remove();
+        for (Cmd lCmd : cmds) {
+            if (cmd.getGroup() != null && cmd.getGroup().equals(lCmd.getGroup())) {
+                lCmd.terminate();
+                cmds.remove(lCmd);
             }
         }
 
@@ -23,12 +19,10 @@ public class Scheduler {
     }
 
     public static void run() {
-        Iterator<Cmd> iter = cmds.iterator();
-        while (iter.hasNext()) {
-            Cmd next = iter.next();
-            if (next.isFinished()) {
-                next.terminate();
-                iter.remove();
+        for (Cmd cmd : cmds) {
+            if (cmd.isFinished()) {
+                cmd.terminate();
+                cmds.remove(cmd);
             }
         }
 

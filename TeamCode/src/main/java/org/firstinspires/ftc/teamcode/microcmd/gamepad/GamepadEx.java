@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public class GamepadEx implements Periodic {
     public Button a, b, x, y, dpadUp, dpadDown, dpadLeft, dpadRight, leftBumper, rightBumper,
             leftStickButton, rightStickButton, leftTrigger, rightTrigger;
+    public Stick leftStick, rightStick;
     private final Button[] buttons;
 
     public GamepadEx(Gamepad gamepad) {
@@ -37,11 +38,15 @@ public class GamepadEx implements Periodic {
         leftTrigger = new Trigger(() -> gamepad.left_trigger);
         rightTrigger = new Trigger(() -> gamepad.left_trigger);
 
+        leftStick = new Stick(() -> gamepad.left_stick_x, () -> gamepad.left_stick_y);
+        rightStick = new Stick(() -> gamepad.right_stick_x, () -> gamepad.right_stick_y);
+
         buttons = new Button[]{a, b, x, y, dpadUp, dpadDown, dpadLeft, dpadRight, leftBumper, rightBumper,
                 leftStickButton, rightStickButton, leftTrigger};
 
     }
 
+    // TODO test multiple
     public void multiple(Cmd cmd, BooleanSupplier... events) {
         BooleanSupplier allEvents = () -> Stream.of(events).allMatch(BooleanSupplier::getAsBoolean);
         Scheduler.schedule(new BindCmd(cmd, allEvents, () -> false));

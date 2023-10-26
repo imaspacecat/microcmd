@@ -9,7 +9,7 @@ import java.util.function.BooleanSupplier;
 
 import static org.firstinspires.ftc.teamcode.microcmd.gamepad.Button.ButtonState.*;
 
-
+// TODO test all the different button conditions
 public class Button implements Periodic {
     private BooleanSupplier event;
     protected boolean isDown = false;
